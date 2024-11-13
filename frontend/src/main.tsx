@@ -8,6 +8,8 @@ import RegisterPage from "./pages/RegisterPage.tsx";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { AuthProvider } from "./context/AuthContext.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
+import AddHotel from "./pages/AddHotel.tsx";
+import { ProtectedRoute } from "./pages/ProtectedPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
       {
         path: "/sign-in",
         element: <LoginPage />,
+      },
+      {
+        path: "/my-hotels",
+        element: (
+          <ProtectedRoute>
+            <AddHotel />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
